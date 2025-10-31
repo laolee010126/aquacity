@@ -26,7 +26,7 @@ export function ContactSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-2xl font-bold text-blue-600 mb-2">0507-1462-1368</p>
-                <p className="text-muted-foreground">평일 09:00-21:00, 주말 09:00-18:00</p>
+                <p className="text-muted-foreground">평일 06:00-21:00, 주말 06:00-9:00</p>
               </CardContent>
             </Card>
             
@@ -62,19 +62,11 @@ export function ContactSection() {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>평일</span>
-                    <span className="font-medium">06:00 - 22:00</span>
+                    <span className="font-medium">06:00 - 21:00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>토요일</span>
-                    <span className="font-medium">06:00 - 20:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>일요일</span>
-                    <span className="font-medium">08:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between text-red-600">
-                    <span>정기휴무</span>
-                    <span className="font-medium">매월 둘째주 월요일</span>
+                    <span>주말</span>
+                    <span className="font-medium">06:00 - 09:00</span>
                   </div>
                 </div>
               </CardContent>

@@ -14,7 +14,6 @@ export async function InstructorsSection() {
         name: instructor.name,
         photo: instructor.photo_url || '',
         specialty: parseStringArray(instructor.specialty),
-        rating: instructor.rating,
         description: instructor.description || ''
       }))
     }

@@ -19,9 +19,12 @@ export function Footer() {
           <div>
             <h4 className="font-bold mb-4">수영강습</h4>
             <ul className="space-y-2 text-sm text-gray-300">
+              <li>기초 수영교실</li>
               <li>초급 수영교실</li>
               <li>중급 수영교실</li>
               <li>고급 수영교실</li>
+              <li>키즈마스터즈</li>
+              <li>성인마스터즈</li>
               <li>아쿠아로빅</li>
               <li>어린이 수영교실</li>
               <li>개인 레슨</li>
@@ -45,8 +48,8 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-gray-300">
               <li>📞 0507-1462-1368</li>
               <li>📍 광주 북구 서하로 82</li>
-              <li>🕐 평일 09:00-21:00</li>
-              <li>🕐 주말 09:00-18:00</li>
+              <li>🕐 평일 06:00-21:00</li>
+              <li>🕐 주말 06:00-09:00</li>
             </ul>
           </div>
         </div>

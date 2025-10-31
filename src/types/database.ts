@@ -32,8 +32,14 @@ export interface Program {
   schedule?: string // 쉼표로 구분된 문자열
   image_url?: string
   level_color?: string
+  parent_id?: string // 상위 프로그램 ID (계층 구조)
+  curriculum_content?: string // 수업 내용
+  requirements?: string // 수강 조건
+  display_order?: number // 표시 순서
   created_at: string
   updated_at: string
+  // 클라이언트 측에서 계산되는 필드
+  children?: Program[] // 하위 프로그램 목록
 }
 
 export interface NewsItem {

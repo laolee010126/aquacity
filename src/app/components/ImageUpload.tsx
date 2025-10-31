@@ -54,7 +54,11 @@ export function ImageUpload({
       }
     } catch (error) {
       console.error('Upload error:', error)
-      alert('이미지 업로드 중 오류가 발생했습니다.')
+
+      // 에러 메시지를 더 친절하게 표시
+      const errorMessage = error instanceof Error ? error.message : '이미지 업로드 중 오류가 발생했습니다.'
+      alert(errorMessage)
+
       setPreviewUrl(currentImageUrl || null)
     } finally {
       setIsUploading(false)

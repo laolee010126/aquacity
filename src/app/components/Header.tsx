@@ -2,13 +2,42 @@
 
 import { Phone, MapPin, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [prevScrollY, setPrevScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // 최상단에 있으면 항상 표시
+      if (currentScrollY < 10) {
+        setVisible(true);
+      } else {
+        // 스크롤 방향 감지
+        if (currentScrollY > prevScrollY) {
+          // 아래로 스크롤 - 숨김
+          setVisible(false);
+        } else {
+          // 위로 스크롤 - 표시
+          setVisible(true);
+        }
+      }
+
+      setPrevScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollY]);
 
   return (
-    <header className="bg-blue-600 text-white">
+    <header className={`bg-blue-600 text-white fixed top-0 left-0 right-0 z-50 md:relative transition-transform duration-300 ${
+      visible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+    }`}>
       {/* Top bar with contact info - hidden on mobile */}
       <div className="bg-blue-700 py-2 hidden md:block">
         <div className="container mx-auto px-4">
@@ -24,7 +53,7 @@ export function Header() {
               </div>
             </div>
             <div>
-              <span>운영시간: 06:00 - 22:00</span>
+              <span>운영시간: 06:00 - 21:00</span>
             </div>
           </div>
         </div>
@@ -39,6 +68,14 @@ export function Header() {
                 <span className="text-blue-600 font-bold">🏊</span>
               </div>
               <h1 className="text-xl md:text-2xl font-bold">아쿠아시티</h1>
+            </div>
+
+            {/* Mobile phone number */}
+            <div className="md:hidden flex items-center gap-2 text-sm">
+              <Phone className="w-3 h-3" />
+              <a href="tel:0507-1462-1368" className="hover:text-blue-200">
+                0507-1462-1368
+              </a>
             </div>
             
             {/* Desktop Navigation */}

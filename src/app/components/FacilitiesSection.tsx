@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Waves, Bath, Car, Coffee, Wifi, Shield } from "lucide-react";
+import { Waves, Bath, Car, Coffee, Wifi } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
 
 const facilities = [
@@ -27,11 +27,6 @@ const facilities = [
     icon: Wifi,
     title: "무료 WiFi",
     description: "센터 전체에서 고속 무선인터넷을 무료로 이용하실 수 있습니다."
-  },
-  {
-    icon: Shield,
-    title: "안전관리",
-    description: "24시간 CCTV 모니터링과 전문 안전요원이 상주합니다."
   }
 ];
 
@@ -82,7 +77,7 @@ export function FacilitiesSection() {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {facilities.map((facility, index) => {
             const Icon = facility.icon;
             return (
@@ -91,10 +86,10 @@ export function FacilitiesSection() {
                   <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-blue-600" />
                   </div>
-                  <CardTitle>{facility.title}</CardTitle>
+                  <CardTitle className="text-base md:text-lg">{facility.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{facility.description}</p>
+                  <p className="text-muted-foreground text-xs md:text-sm">{facility.description}</p>
                 </CardContent>
               </Card>
             );

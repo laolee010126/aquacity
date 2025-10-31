@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Instructor, parseStringArray } from '@/types/database'
+import { Instructor } from '@/types/database'
 import { getInstructors, createInstructor, updateInstructor, deleteInstructor } from '@/lib/database'
 import { ImageUpload } from '@/app/components/ImageUpload'
 
@@ -16,10 +16,7 @@ export default function AdminInstructors() {
   const [editingInstructor, setEditingInstructor] = useState<Instructor | null>(null)
   const [formData, setFormData] = useState({
     name: '',
-    photo_url: '',
-    specialty: '',
-    rating: 4.0,
-    description: ''
+    photo_url: ''
   })
 
   useEffect(() => {
@@ -48,10 +45,7 @@ export default function AdminInstructors() {
     setEditingInstructor(null)
     setFormData({
       name: '',
-      photo_url: '',
-      specialty: '',
-      rating: 4.0,
-      description: ''
+      photo_url: ''
     })
     setIsModalOpen(true)
   }
@@ -60,10 +54,7 @@ export default function AdminInstructors() {
     setEditingInstructor(instructor)
     setFormData({
       name: instructor.name,
-      photo_url: instructor.photo_url || '',
-      specialty: instructor.specialty || '',
-      rating: instructor.rating,
-      description: instructor.description || ''
+      photo_url: instructor.photo_url || ''
     })
     setIsModalOpen(true)
   }
@@ -156,26 +147,8 @@ export default function AdminInstructors() {
                     <img src={instructor.photo_url} alt={instructor.name} className="w-full h-64 object-cover" />
                   )}
                   <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-4">
                       <h3 className="text-lg font-semibold text-gray-900">{instructor.name}</h3>
-                      <div className="flex items-center">
-                        <span className="text-yellow-500">★</span>
-                        <span className="ml-1 text-sm text-gray-600">{instructor.rating}</span>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-3">{instructor.description}</p>
-                    
-                    <div className="space-y-2 mb-4">
-                      <div>
-                        <h4 className="text-xs font-medium text-gray-700">전문 분야</h4>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {parseStringArray(instructor.specialty).map((skill, index) => (
-                            <span key={index} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
 
                     <div className="flex gap-2">
@@ -238,39 +211,6 @@ export default function AdminInstructors() {
                   onImageUpload={(url) => setFormData({...formData, photo_url: url})}
                   label="강사 사진"
                 />
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">평점</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="5"
-                    step="0.1"
-                    value={formData.rating}
-                    onChange={(e) => setFormData({...formData, rating: parseFloat(e.target.value)})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">전문 분야 (쉼표로 구분)</label>
-                  <input
-                    type="text"
-                    value={formData.specialty}
-                    onChange={(e) => setFormData({...formData, specialty: e.target.value})}
-                    placeholder="자유형, 배영, 초급자 지도"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">소개</label>
-                  <textarea
-                    value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
 
                 <div className="flex gap-3 pt-4">
                   <button

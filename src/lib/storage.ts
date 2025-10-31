@@ -14,6 +14,12 @@ export async function uploadImage(file: File, bucket: string = 'aqua-image'): Pr
 
     if (error) {
       console.error('Upload error:', error)
+
+      // RLS 정책 오류인 경우 더 명확한 메시지
+      if (error.message?.includes('row-level security') || error.message?.includes('policy')) {
+        throw new Error('이미지 업로드 권한이 없습니다. Supabase Storage 정책을 확인해주세요. (migrations/004_setup_storage_policies.sql 참고)')
+      }
+
       throw error // 에러를 던져서 상위에서 처리할 수 있도록
     }
 

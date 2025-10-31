@@ -1,33 +1,29 @@
-import { getPrograms } from "@/lib/database"
 import { ProgramsClient } from "./ProgramsClient"
-import { Program, parseStringArray } from "@/types/database"
+import { existsSync } from 'fs'
+import path from 'path'
 
 export async function ProgramsSection() {
-  let programsData = []
-  
+  // 스케줄 이미지 경로 확인
+  let scheduleImageUrl: string | null = null
+
   try {
-    const dbPrograms = await getPrograms()
-    
-    if (dbPrograms.length > 0) {
-      // DB 데이터를 기존 컴포넌트 형식으로 변환
-      programsData = dbPrograms.map((program: Program) => ({
-        title: program.title,
-        description: program.description || '',
-        level: program.level || '',
-        duration: program.duration || '',
-        capacity: program.capacity || '',
-        price: program.price || '',
-        instructor: program.instructor_name || '',
-        schedule: parseStringArray(program.schedule),
-        image: program.image_url || '',
-        levelColor: (program.level_color || 'blue') as 'green' | 'yellow' | 'red' | 'blue' | 'purple'
-      }))
+    // 서버 사이드에서 직접 파일 시스템 확인
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'schedule')
+    const extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp']
+
+    // 존재하는 스케줄 이미지 찾기
+    for (const ext of extensions) {
+      const fileName = `schedule-image.${ext}`
+      const filePath = path.join(uploadDir, fileName)
+
+      if (existsSync(filePath)) {
+        scheduleImageUrl = `/uploads/schedule/${fileName}`
+        break
+      }
     }
   } catch (error) {
-    console.error('Failed to load programs from database:', error)
-    // 서버에서 폴백 데이터 사용
-    programsData = []
+    console.error('Failed to load schedule image:', error)
   }
 
-  return <ProgramsClient initialPrograms={programsData} />
+  return <ProgramsClient scheduleImageUrl={scheduleImageUrl} />
 }
