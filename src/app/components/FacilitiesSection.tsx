@@ -6,7 +6,7 @@ import { ImageWithFallback } from "./ImageWithFallback";
 const premiumFacilities = [
   {
     icon: Flame,
-    title: "호텔급 사우나시설",
+    title: "사우나시설",
     description: "고급스러운 사우나와 스파 시설로 수영 후 완벽한 휴식을 제공합니다. 남녀 분리된 대형 사우나에서 편안한 시간을 보내실 수 있습니다.",
     image: "/images/sauna.jpg", // 실제 사우나 이미지 경로로 교체해주세요
     color: "orange"

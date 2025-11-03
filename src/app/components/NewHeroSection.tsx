@@ -25,7 +25,7 @@ export function HeroSection() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="text-center md:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-              호텔급 사우나 & 유수풀이 있는<br />
+              사우나 & 유수풀이 있는<br />
               <span className="text-blue-200">프리미엄 수영장</span>
             </h2>
 
@@ -33,7 +33,7 @@ export function HeroSection() {
             <div className="flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start mb-6 md:mb-8">
               <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-blue-900 text-xs md:text-sm font-medium shadow-sm">
                 <Flame className="w-3 h-3 md:w-4 md:h-4 text-orange-500" />
-                호텔급 사우나
+                사우나
               </div>
               <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-blue-900 text-xs md:text-sm font-medium shadow-sm">
                 <Droplets className="w-3 h-3 md:w-4 md:h-4 text-blue-500" />
