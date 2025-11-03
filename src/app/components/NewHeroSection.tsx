@@ -2,7 +2,7 @@
 
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./ImageWithFallback";
-import { Flame, Droplets, Waves, Users } from "lucide-react";
+import { Flame, Droplets, Users } from "lucide-react";
 
 export function HeroSection() {
   const scrollToPrograms = () => {

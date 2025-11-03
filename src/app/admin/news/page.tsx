@@ -324,9 +324,9 @@ export default function AdminNews() {
                           <span className="text-xs">{formatDate(newsItem.date)}</span>
                         </div>
                         {newsItem.is_published ? (
-                          <Eye className="w-4 h-4 text-green-600" title="게시됨" />
+                          <Eye className="w-4 h-4 text-green-600" aria-label="게시됨" />
                         ) : (
-                          <EyeOff className="w-4 h-4 text-gray-400" title="임시저장" />
+                          <EyeOff className="w-4 h-4 text-gray-400" aria-label="임시저장" />
                         )}
                       </div>
                     </div>

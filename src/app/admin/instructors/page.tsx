@@ -16,7 +16,8 @@ export default function AdminInstructors() {
   const [editingInstructor, setEditingInstructor] = useState<Instructor | null>(null)
   const [formData, setFormData] = useState({
     name: '',
-    photo_url: ''
+    photo_url: '',
+    rating: 5.0
   })
 
   useEffect(() => {
@@ -45,7 +46,8 @@ export default function AdminInstructors() {
     setEditingInstructor(null)
     setFormData({
       name: '',
-      photo_url: ''
+      photo_url: '',
+      rating: 5.0
     })
     setIsModalOpen(true)
   }
@@ -54,7 +56,8 @@ export default function AdminInstructors() {
     setEditingInstructor(instructor)
     setFormData({
       name: instructor.name,
-      photo_url: instructor.photo_url || ''
+      photo_url: instructor.photo_url || '',
+      rating: instructor.rating
     })
     setIsModalOpen(true)
   }

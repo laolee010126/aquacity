@@ -65,11 +65,11 @@ export async function createProgram(program: Omit<Program, 'id' | 'created_at' |
     const cleanedProgram = { ...program }
 
     if (cleanedProgram.parent_id === '') {
-      cleanedProgram.parent_id = null as any
+      cleanedProgram.parent_id = undefined
     }
 
     if (cleanedProgram.display_order === undefined || cleanedProgram.display_order === null) {
-      cleanedProgram.display_order = 0 as any
+      cleanedProgram.display_order = 0
     }
 
     const { data, error } = await supabase
@@ -96,14 +96,14 @@ export async function updateProgram(id: string, updates: Partial<Program>): Prom
     // 빈 문자열을 null로 변환 (UUID 필드 등을 위해)
     const cleanedUpdates = { ...updates }
 
-    // parent_id가 빈 문자열이면 null로 변환
+    // parent_id가 빈 문자열이면 undefined로 변환
     if (cleanedUpdates.parent_id === '') {
-      cleanedUpdates.parent_id = null as any
+      cleanedUpdates.parent_id = undefined
     }
 
     // display_order가 없거나 잘못된 값이면 0으로 설정
     if (cleanedUpdates.display_order === undefined || cleanedUpdates.display_order === null) {
-      cleanedUpdates.display_order = 0 as any
+      cleanedUpdates.display_order = 0
     }
 
     const { data, error } = await supabase

@@ -1,6 +1,4 @@
-interface FeaturesSectionProps {}
-
-export function FeaturesSection({}: FeaturesSectionProps) {
+export function FeaturesSection() {
   const features = [
     {
       title: "Creative Design",

@@ -1,6 +1,4 @@
-interface FooterProps {}
-
-export function Footer({}: FooterProps) {
+export function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-16 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -13,8 +11,8 @@ export function Footer({}: FooterProps) {
               <span className="text-xl font-semibold">Dot Indent</span>
             </div>
             <p className="text-gray-400 leading-relaxed max-w-md">
-              We create digital experiences that inspire, engage, and drive results. 
-              Let's work together to bring your vision to life.
+              We create digital experiences that inspire, engage, and drive results.
+              Let&apos;s work together to bring your vision to life.
             </p>
           </div>
           

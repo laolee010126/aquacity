@@ -3,7 +3,12 @@ import { InstructorsClient } from "./InstructorsClient"
 import { Instructor, parseStringArray } from "@/types/database"
 
 export async function InstructorsSection() {
-  let instructorsData = []
+  let instructorsData: Array<{
+    name: string
+    photo: string
+    specialty: string[]
+    description: string
+  }> = []
   
   try {
     const dbInstructors = await getInstructors()

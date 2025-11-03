@@ -1,6 +1,4 @@
-interface HeroSectionProps {}
-
-export function HeroSection({}: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section className="pt-32 pb-20 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">

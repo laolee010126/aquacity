@@ -66,7 +66,6 @@ export function FacilitiesSection() {
               const iconColorClasses = facility.color === "orange"
                 ? "bg-orange-500"
                 : "bg-blue-500";
-              const iconColor = facility.color === "orange" ? "text-orange-500" : "text-blue-500";
 
               return (
                 <Card

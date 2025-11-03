@@ -1,8 +1,9 @@
 import { getNews } from "@/lib/database"
 import { NewsClient } from "./NewsClient"
+import { NewsItem } from "@/types/database"
 
 export async function NewsSection() {
-  let newsData = []
+  let newsData: NewsItem[] = []
   
   try {
     newsData = await getNews()

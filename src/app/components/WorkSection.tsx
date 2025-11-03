@@ -1,6 +1,4 @@
-interface WorkSectionProps {}
-
-export function WorkSection({}: WorkSectionProps) {
+export function WorkSection() {
   const projects = [
     {
       title: "E-commerce Platform",
