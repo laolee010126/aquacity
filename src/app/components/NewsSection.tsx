@@ -1,4 +1,4 @@
-import { getNews } from "@/lib/database"
+import { getNews } from "@/lib/data"
 import { NewsClient } from "./NewsClient"
 import { NewsItem } from "@/types/database"
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { uploadImage } from '@/lib/storage'
+import { uploadImage } from '@/lib/data'
 
 interface ImageUploadProps {
   currentImageUrl?: string

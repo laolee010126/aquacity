@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { getAllNews, createNews, updateNews, deleteNews } from '@/lib/database'
+import { getNews as getAllNews, createNews, updateNews, deleteNews } from '@/lib/data'
 import { NewsItem } from '@/types/database'
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card'
 import { Badge } from '@/app/components/ui/badge'

@@ -1,4 +1,4 @@
-import { getInstructors } from "@/lib/database"
+import { getInstructors } from "@/lib/data"
 import { InstructorsClient } from "./InstructorsClient"
 import { Instructor, parseStringArray } from "@/types/database"
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Instructor } from '@/types/database'
-import { getInstructors, createInstructor, updateInstructor, deleteInstructor } from '@/lib/database'
+import { getInstructors, createInstructor, updateInstructor, deleteInstructor } from '@/lib/data'
 import { ImageUpload } from '@/app/components/ImageUpload'
 
 export default function AdminInstructors() {
