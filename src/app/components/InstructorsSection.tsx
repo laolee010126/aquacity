@@ -24,8 +24,12 @@ export async function InstructorsSection() {
     }
   } catch (error) {
     console.error('Failed to load instructors from database:', error)
-    // 서버에서 폴백 데이터 사용
     instructorsData = []
+  }
+
+  // 데이터가 없으면 섹션을 렌더링하지 않음
+  if (instructorsData.length === 0) {
+    return null
   }
 
   return <InstructorsClient initialInstructors={instructorsData} />

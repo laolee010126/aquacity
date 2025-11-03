@@ -4,13 +4,17 @@ import { NewsItem } from "@/types/database"
 
 export async function NewsSection() {
   let newsData: NewsItem[] = []
-  
+
   try {
     newsData = await getNews()
   } catch (error) {
     console.error('Failed to load news from database:', error)
-    // 서버에서 폴백 데이터 사용
     newsData = []
+  }
+
+  // 데이터가 없으면 섹션을 렌더링하지 않음
+  if (newsData.length === 0) {
+    return null
   }
 
   return <NewsClient initialNews={newsData} />
