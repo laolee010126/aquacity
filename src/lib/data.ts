@@ -1,9 +1,15 @@
 import { Instructor, NewsItem } from '@/types/database'
 
+// 서버/클라이언트 환경에 따라 base URL 반환
+function getBaseUrl() {
+  if (typeof window !== 'undefined') return '' // 브라우저
+  return process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000' // 서버
+}
+
 // News API functions
 export async function getNews(): Promise<NewsItem[]> {
   try {
-    const res = await fetch('/api/news', { cache: 'no-store' })
+    const res = await fetch(`${getBaseUrl()}/api/news`, { cache: 'no-store' })
     if (!res.ok) return []
     return res.json()
   } catch (error) {
@@ -14,7 +20,7 @@ export async function getNews(): Promise<NewsItem[]> {
 
 export async function createNews(news: Omit<NewsItem, 'id' | 'created_at' | 'updated_at'>): Promise<NewsItem | null> {
   try {
-    const res = await fetch('/api/news', {
+    const res = await fetch(`${getBaseUrl()}/api/news`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(news)
@@ -29,7 +35,7 @@ export async function createNews(news: Omit<NewsItem, 'id' | 'created_at' | 'upd
 
 export async function updateNews(id: string, updates: Partial<NewsItem>): Promise<NewsItem | null> {
   try {
-    const res = await fetch(`/api/news/${id}`, {
+    const res = await fetch(`${getBaseUrl()}/api/news/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updates)
@@ -44,7 +50,7 @@ export async function updateNews(id: string, updates: Partial<NewsItem>): Promis
 
 export async function deleteNews(id: string): Promise<boolean> {
   try {
-    const res = await fetch(`/api/news/${id}`, {
+    const res = await fetch(`${getBaseUrl()}/api/news/${id}`, {
       method: 'DELETE'
     })
     return res.ok
@@ -57,7 +63,7 @@ export async function deleteNews(id: string): Promise<boolean> {
 // Instructor API functions
 export async function getInstructors(): Promise<Instructor[]> {
   try {
-    const res = await fetch('/api/instructors', { cache: 'no-store' })
+    const res = await fetch(`${getBaseUrl()}/api/instructors`, { cache: 'no-store' })
     if (!res.ok) return []
     return res.json()
   } catch (error) {
@@ -68,7 +74,7 @@ export async function getInstructors(): Promise<Instructor[]> {
 
 export async function createInstructor(instructor: Omit<Instructor, 'id' | 'created_at' | 'updated_at'>): Promise<Instructor | null> {
   try {
-    const res = await fetch('/api/instructors', {
+    const res = await fetch(`${getBaseUrl()}/api/instructors`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(instructor)
@@ -83,7 +89,7 @@ export async function createInstructor(instructor: Omit<Instructor, 'id' | 'crea
 
 export async function updateInstructor(id: string, updates: Partial<Instructor>): Promise<Instructor | null> {
   try {
-    const res = await fetch(`/api/instructors/${id}`, {
+    const res = await fetch(`${getBaseUrl()}/api/instructors/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updates)
@@ -98,7 +104,7 @@ export async function updateInstructor(id: string, updates: Partial<Instructor>)
 
 export async function deleteInstructor(id: string): Promise<boolean> {
   try {
-    const res = await fetch(`/api/instructors/${id}`, {
+    const res = await fetch(`${getBaseUrl()}/api/instructors/${id}`, {
       method: 'DELETE'
     })
     return res.ok
@@ -115,7 +121,7 @@ export async function uploadImage(file: File, category: string = 'general'): Pro
     formData.append('file', file)
     formData.append('category', category)
 
-    const res = await fetch('/api/upload-image', {
+    const res = await fetch(`${getBaseUrl()}/api/upload-image`, {
       method: 'POST',
       body: formData
     })
