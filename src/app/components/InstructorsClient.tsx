@@ -56,9 +56,7 @@ interface InstructorsClientProps {
 export function InstructorsClient({ initialInstructors }: InstructorsClientProps) {
   // 서버에서 받은 데이터가 없으면 폴백 데이터 사용
   const instructors = initialInstructors.length > 0 ? initialInstructors : fallbackInstructors
-  const uniqueSpecialtiesCount = new Set(
-    instructors.flatMap((instructor) => instructor.specialty)
-  ).size
+
 
   return (
     <section id="instructors" className="py-12 md:py-20 bg-white">
@@ -70,21 +68,7 @@ export function InstructorsClient({ initialInstructors }: InstructorsClientProps
             여러분의 수영 실력 향상을 도와드립니다
           </p>
           
-          {/* Instructor summary */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-8 md:mb-12">
-            <div className="bg-blue-50 p-3 md:p-4 rounded-lg border">
-              <div className="text-lg md:text-xl font-bold text-blue-600">{instructors.length}명</div>
-              <div className="text-xs md:text-sm text-gray-600">전문 강사</div>
-            </div>
-            <div className="bg-purple-50 p-3 md:p-4 rounded-lg border">
-              <div className="text-lg md:text-xl font-bold text-purple-600">{uniqueSpecialtiesCount}개</div>
-              <div className="text-xs md:text-sm text-gray-600">전문 분야</div>
-            </div>
-            <div className="bg-orange-50 p-3 md:p-4 rounded-lg border">
-              <div className="text-lg md:text-xl font-bold text-orange-600">1:1</div>
-              <div className="text-xs md:text-sm text-gray-600">맞춤 레슨 지원</div>
-            </div>
-          </div>
+
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">

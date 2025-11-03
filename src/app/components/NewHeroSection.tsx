@@ -1,24 +1,64 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./ImageWithFallback";
+import { Flame, Droplets, Waves, Users } from "lucide-react";
 
 export function HeroSection() {
+  const scrollToPrograms = () => {
+    const programsSection = document.getElementById('programs');
+    if (programsSection) {
+      const headerOffset = 80; // Approximate header height
+      const elementPosition = programsSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <section id="home" className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 md:py-20">
+    <section id="home" className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-20 pb-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="text-center md:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-              깨끗하고 안전한<br />
-              프리미엄 수영장
+              호텔급 사우나 & 유수풀이 있는<br />
+              <span className="text-blue-200">프리미엄 수영장</span>
             </h2>
+
+            {/* Feature badges */}
+            <div className="flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start mb-6 md:mb-8">
+              <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-blue-900 text-xs md:text-sm font-medium shadow-sm">
+                <Flame className="w-3 h-3 md:w-4 md:h-4 text-orange-500" />
+                호텔급 사우나
+              </div>
+              <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-blue-900 text-xs md:text-sm font-medium shadow-sm">
+                <Droplets className="w-3 h-3 md:w-4 md:h-4 text-blue-500" />
+                유수풀 시설
+              </div>
+              <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-blue-900 text-xs md:text-sm font-medium shadow-sm">
+                <Users className="w-3 h-3 md:w-4 md:h-4 text-blue-600" />
+                전문 강사진
+              </div>
+            </div>
+
             <p className="text-lg md:text-xl mb-6 md:mb-8 text-blue-100">
-              {'전문 강사진과 함께하는 체계적인 수영강습으로\n건강한 라이프스타일을 시작하세요'}
+              체계적인 수영강습과 프리미엄 부대시설로<br className="hidden md:block" />
+              건강한 라이프스타일을 시작하세요
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start">
-              <Button size="lg" variant="secondary" className="w-full sm:w-auto sm:px-8">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="w-full sm:w-auto sm:px-8"
+                onClick={scrollToPrograms}
+              >
                 수강신청 하기
               </Button>
-            
+
             </div>
           </div>
           

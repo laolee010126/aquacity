@@ -34,6 +34,20 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollY]);
 
+  const scrollToPrograms = () => {
+    const programsSection = document.getElementById('programs');
+    if (programsSection) {
+      const headerOffset = 80; // Approximate header height
+      const elementPosition = programsSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <header className={`bg-blue-600 text-white fixed top-0 left-0 right-0 z-50 md:relative transition-transform duration-300 ${
       visible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
@@ -87,7 +101,7 @@ export function Header() {
               <a href="#contact" className="hover:text-blue-200 transition-colors">연락처</a>
             </nav>
 
-            <Button variant="secondary" className="hidden md:block">
+            <Button variant="secondary" className="hidden md:block" onClick={scrollToPrograms}>
               수강신청
             </Button>
 
@@ -144,7 +158,14 @@ export function Header() {
                 >
                   연락처
                 </a>
-                <Button variant="secondary" className="mt-2 w-fit">
+                <Button
+                  variant="secondary"
+                  className="mt-2 w-fit"
+                  onClick={() => {
+                    scrollToPrograms();
+                    setIsMenuOpen(false);
+                  }}
+                >
                   수강신청
                 </Button>
               </nav>

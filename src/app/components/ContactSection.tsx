@@ -89,14 +89,9 @@ export function ContactSection() {
                 </div>
                 
                 <div className="space-y-3">
-                  <h4 className="font-medium">대중교통 이용시</h4>
+                  <h4 className="font-medium">자가용 이용시</h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• 지하철 9호선 신논현역 1번 출구 도보 8분</li>
-                    <li>• 버스: 146, 740, 360번 테헤란로 정류장 하차</li>
-                  </ul>
-                  
-                  <h4 className="font-medium mt-4">자가용 이용시</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• 서광주IC에서 광주국립박물관, 광주예술고등학교 방면</li>
                     <li>• 지하주차장 이용 (50대 주차 가능)</li>
                     <li>• 주차 요금: 최초 2시간 무료, 이후 시간당 1,000원</li>
                   </ul>
