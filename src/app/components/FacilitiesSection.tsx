@@ -55,6 +55,43 @@ export function FacilitiesSection() {
           </p>
         </div>
 
+        {/* Pool showcase section */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=600&h=400&fit=crop"
+              alt="아쿠아시티 메인 수영장"
+              className="rounded-lg shadow-lg w-full h-80 object-cover"
+            />
+          </div>
+          <div>
+            <h3 className="text-2xl font-bold mb-6">프리미엄 수영장 시설</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium">정밀 수질 관리</h4>
+                  <p className="text-muted-foreground text-sm">최신 정수 시설로 항상 깨끗하고 안전한 물을 유지합니다</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium">적정 수온 유지</h4>
+                  <p className="text-muted-foreground text-sm">연중 28-30도의 쾌적한 수온을 유지합니다</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium">넓은 수영 공간</h4>
+                  <p className="text-muted-foreground text-sm">여유로운 레인 운영으로 쾌적한 수영 환경을 제공합니다</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Premium Featured Facilities */}
         <div className="mb-16">
           <div className="grid grid-cols-2 gap-4 md:gap-8 mb-12">
@@ -93,43 +130,6 @@ export function FacilitiesSection() {
                 </Card>
               );
             })}
-          </div>
-        </div>
-
-        {/* Pool showcase section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <ImageWithFallback
-              src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=600&h=400&fit=crop"
-              alt="아쿠아시티 메인 수영장"
-              className="rounded-lg shadow-lg w-full h-80 object-cover"
-            />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-6">프리미엄 수영장 시설</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
-                <div>
-                  <h4 className="font-medium">정밀 수질 관리</h4>
-                  <p className="text-muted-foreground text-sm">최신 정수 시설로 항상 깨끗하고 안전한 물을 유지합니다</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
-                <div>
-                  <h4 className="font-medium">적정 수온 유지</h4>
-                  <p className="text-muted-foreground text-sm">연중 28-30도의 쾌적한 수온을 유지합니다</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
-                <div>
-                  <h4 className="font-medium">넓은 수영 공간</h4>
-                  <p className="text-muted-foreground text-sm">여유로운 레인 운영으로 쾌적한 수영 환경을 제공합니다</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
