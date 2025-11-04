@@ -1,4 +1,4 @@
-import { getInstructors } from "@/lib/data"
+import { getInstructorsServer } from "@/lib/data-server"
 import { InstructorsClient } from "./InstructorsClient"
 import { Instructor, parseStringArray } from "@/types/database"
 
@@ -9,10 +9,10 @@ export async function InstructorsSection() {
     specialty: string[]
     description: string
   }> = []
-  
+
   try {
-    const dbInstructors = await getInstructors()
-    
+    const dbInstructors = await getInstructorsServer()
+
     if (dbInstructors.length > 0) {
       // DB 데이터를 기존 컴포넌트 형식으로 변환
       instructorsData = dbInstructors.map((instructor: Instructor) => ({

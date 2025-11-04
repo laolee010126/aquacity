@@ -1,4 +1,4 @@
-import { getNews } from "@/lib/data"
+import { getNewsServer } from "@/lib/data-server"
 import { NewsClient } from "./NewsClient"
 import { NewsItem } from "@/types/database"
 
@@ -6,7 +6,7 @@ export async function NewsSection() {
   let newsData: NewsItem[] = []
 
   try {
-    newsData = await getNews()
+    newsData = await getNewsServer()
   } catch (error) {
     console.error('Failed to load news from database:', error)
     newsData = []

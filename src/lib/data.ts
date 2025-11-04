@@ -6,10 +6,10 @@ function getBaseUrl() {
   return ''
 }
 
-// News API functions
+// News API functions - 클라이언트 컴포넌트용 (API 호출)
 export async function getNews(): Promise<NewsItem[]> {
   try {
-    const res = await fetch(`${getBaseUrl()}/api/news`, { cache: 'no-store' })
+    const res = await fetch('/api/news', { cache: 'no-store' })
     if (!res.ok) return []
     return res.json()
   } catch (error) {
@@ -60,10 +60,10 @@ export async function deleteNews(id: string): Promise<boolean> {
   }
 }
 
-// Instructor API functions
+// Instructor API functions - 클라이언트 컴포넌트용 (API 호출)
 export async function getInstructors(): Promise<Instructor[]> {
   try {
-    const res = await fetch(`${getBaseUrl()}/api/instructors`, { cache: 'no-store' })
+    const res = await fetch('/api/instructors', { cache: 'no-store' })
     if (!res.ok) return []
     return res.json()
   } catch (error) {
