@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
@@ -93,6 +93,8 @@ interface NewsClientProps {
 export function NewsClient({ initialNews }: NewsClientProps) {
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   // 서버에서 받은 데이터가 없으면 폴백 데이터 사용
   const newsData = initialNews.length > 0 ? initialNews : fallbackNews
@@ -110,6 +112,25 @@ export function NewsClient({ initialNews }: NewsClientProps) {
     setSelectedNews(news)
     setIsModalOpen(true)
   }
+
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return
+
+    const container = scrollContainerRef.current
+    const scrollLeft = container.scrollLeft
+    const cardWidth = container.scrollWidth / newsData.length
+    const index = Math.round(scrollLeft / cardWidth)
+
+    setActiveIndex(Math.min(index, newsData.length - 1))
+  }
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    container.addEventListener('scroll', handleScroll)
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [newsData.length])
 
   if (newsData.length === 0) {
     return (
@@ -138,7 +159,11 @@ export function NewsClient({ initialNews }: NewsClientProps) {
         
         {/* 모바일 스크롤 */}
         <div className="md:hidden">
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-2 -mx-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-2 -mx-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {newsData.map((news) => (
               <div key={news.id} className="flex-shrink-0 w-[85vw] max-w-sm">
                 <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
@@ -170,6 +195,19 @@ export function NewsClient({ initialNews }: NewsClientProps) {
                   </CardContent>
                 </Card>
               </div>
+            ))}
+          </div>
+
+          {/* 위치 인디케이터 도트 */}
+          <div className="flex justify-center mt-4 gap-2">
+            {newsData.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === activeIndex ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+                aria-label={`${index + 1}번째 소식`}
+              />
             ))}
           </div>
         </div>
