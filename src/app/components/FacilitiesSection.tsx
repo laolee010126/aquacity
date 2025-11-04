@@ -7,14 +7,14 @@ const premiumFacilities = [
   {
     icon: Flame,
     title: "사우나시설",
-    description: "고급스러운 사우나와 스파 시설로 수영 후 완벽한 휴식을 제공합니다. 남녀 분리된 대형 사우나에서 편안한 시간을 보내실 수 있습니다.",
+    description: "고급스러운 사우나와 스파 시설로 수영 후 완벽한 휴식을 제공합니다.",
     image: "/images/sauna.jpg", // 실제 사우나 이미지 경로로 교체해주세요
     color: "orange"
   },
   {
     icon: Droplets,
     title: "유수풀 시설",
-    description: "물의 흐름을 이용한 유수풀로 재미와 운동 효과를 동시에 누리실 수 있습니다. 가족 모두가 즐길 수 있는 특별한 시설입니다.",
+    description: "물의 흐름을 이용한 유수풀로 재미와 운동 효과를 동시에 누리실 수 있습니다.",
     image: "/images/water-pool.jpg", // 실제 유수풀 이미지 경로로 교체해주세요
     color: "blue"
   }
