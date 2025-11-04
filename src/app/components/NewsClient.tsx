@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
+import { Button } from "./ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog"
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react"
 import { NewsItem } from "@/types/database"
 
@@ -90,7 +92,9 @@ interface NewsClientProps {
 
 export function NewsClient({ initialNews }: NewsClientProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
-  
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   // 서버에서 받은 데이터가 없으면 폴백 데이터 사용
   const newsData = initialNews.length > 0 ? initialNews : fallbackNews
 
@@ -124,6 +128,11 @@ export function NewsClient({ initialNews }: NewsClientProps) {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + newsData.length) % newsData.length)
+  }
+
+  const openNewsModal = (news: NewsItem) => {
+    setSelectedNews(news)
+    setIsModalOpen(true)
   }
 
   if (newsData.length === 0) {
@@ -177,9 +186,17 @@ export function NewsClient({ initialNews }: NewsClientProps) {
                       </CardHeader>
                       
                       <CardContent>
-                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line line-clamp-4 mb-4">
                           {news.content}
                         </p>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => openNewsModal(news)}
+                          className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                        >
+                          더보기
+                        </Button>
                       </CardContent>
                     </Card>
                   </div>
@@ -239,10 +256,18 @@ export function NewsClient({ initialNews }: NewsClientProps) {
                       <CardTitle className="text-xl leading-tight">{news.title}</CardTitle>
                     </CardHeader>
                     
-                    <CardContent className="flex-1">
-                      <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+                    <CardContent className="flex-1 flex flex-col">
+                      <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line line-clamp-4 mb-4 flex-1">
                         {news.content}
                       </p>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => openNewsModal(news)}
+                        className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                      >
+                        더보기
+                      </Button>
                     </CardContent>
                   </Card>
                 </div>
@@ -257,6 +282,35 @@ export function NewsClient({ initialNews }: NewsClientProps) {
           </p>
         </div>
       </div>
+
+      {/* 뉴스 상세 모달 */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent>
+          {selectedNews && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center justify-between mb-3">
+                  <Badge className={categoryColors[selectedNews.category_color]}>
+                    {selectedNews.category}
+                  </Badge>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <Calendar className="w-4 h-4" />
+                    <span>{formatDate(selectedNews.date)}</span>
+                  </div>
+                </div>
+                <DialogTitle className="text-xl md:text-2xl text-left">
+                  {selectedNews.title}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="mt-4">
+                <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {selectedNews.content}
+                </p>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }
