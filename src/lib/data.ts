@@ -2,8 +2,8 @@ import { Instructor, NewsItem } from '@/types/database'
 
 // 서버/클라이언트 환경에 따라 base URL 반환
 function getBaseUrl() {
-  if (typeof window !== 'undefined') return '' // 브라우저
-  return process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000' // 서버
+  // 브라우저 및 서버 모두 상대 URL 사용 (API routes가 같은 앱에 있으므로)
+  return ''
 }
 
 // News API functions

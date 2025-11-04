@@ -13,7 +13,7 @@ export function ContactSection() {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-12">
+        <div className="max-w-3xl mx-auto">
           <div className="space-y-6">
             <Card>
               <CardHeader>
@@ -29,9 +29,9 @@ export function ContactSection() {
                 <p className="text-muted-foreground">평일 06:00-21:00, 주말 06:00-9:00</p>
               </CardContent>
             </Card>
-            
 
-            
+
+
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
@@ -48,7 +48,7 @@ export function ContactSection() {
                 </Button>
               </CardContent>
             </Card>
-            
+
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
@@ -68,33 +68,6 @@ export function ContactSection() {
                     <span>주말</span>
                     <span className="font-medium">06:00 - 09:00</span>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <div>
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle>위치 안내</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-gray-200 rounded-lg h-80 flex items-center justify-center mb-6">
-                  <div className="text-center text-muted-foreground">
-                    <MapPin className="w-12 h-12 mx-auto mb-2" />
-                    <p>지도 영역</p>
-                    <p className="text-sm">실제 서비스에서는 Google Maps나</p>
-                    <p className="text-sm">네이버 지도가 표시됩니다</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <h4 className="font-medium">자가용 이용시</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• 서광주IC에서 광주국립박물관, 광주예술고등학교 방면</li>
-                    <li>• 지하주차장 이용 (50대 주차 가능)</li>
-                    <li>• 주차 요금: 최초 2시간 무료, 이후 시간당 1,000원</li>
-                  </ul>
                 </div>
               </CardContent>
             </Card>
