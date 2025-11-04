@@ -177,7 +177,7 @@ export function NewsClient({ initialNews }: NewsClientProps) {
                       </CardHeader>
                       
                       <CardContent>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                           {news.content}
                         </p>
                       </CardContent>
@@ -240,7 +240,7 @@ export function NewsClient({ initialNews }: NewsClientProps) {
                     </CardHeader>
                     
                     <CardContent className="flex-1">
-                      <p className="text-base text-muted-foreground leading-relaxed">
+                      <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
                         {news.content}
                       </p>
                     </CardContent>
