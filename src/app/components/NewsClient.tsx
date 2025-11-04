@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog"
-import { Calendar, ChevronLeft, ChevronRight } from "lucide-react"
+import { Calendar } from "lucide-react"
 import { NewsItem } from "@/types/database"
 
 // 기본 뉴스 데이터 (DB 연결 실패 시 폴백)
@@ -91,43 +91,19 @@ interface NewsClientProps {
 }
 
 export function NewsClient({ initialNews }: NewsClientProps) {
-  const [currentSlide, setCurrentSlide] = useState(0)
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   // 서버에서 받은 데이터가 없으면 폴백 데이터 사용
   const newsData = initialNews.length > 0 ? initialNews : fallbackNews
 
-  // 자동 슬라이드 (모바일에서 3초마다)
-  useEffect(() => {
-    if (newsData.length === 0) return
-    
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % newsData.length)
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [newsData.length])
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString('ko-KR', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     })
-  }
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % newsData.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + newsData.length) % newsData.length)
   }
 
   const openNewsModal = (news: NewsItem) => {
@@ -160,79 +136,41 @@ export function NewsClient({ initialNews }: NewsClientProps) {
           </p>
         </div>
         
-        {/* 모바일 캐러셀 */}
+        {/* 모바일 스크롤 */}
         <div className="md:hidden">
-          <div className="relative">
-            {/* 캐러셀 컨테이너 */}
-            <div className="overflow-hidden rounded-lg">
-              <div 
-                className="flex transition-transform duration-300 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {newsData.map((news) => (
-                  <div key={news.id} className="w-full flex-shrink-0 px-2">
-                    <Card className="h-full hover:shadow-lg transition-shadow">
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between mb-2">
-                          <Badge className={categoryColors[news.category_color]}>
-                            {news.category}
-                          </Badge>
-                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                            <Calendar className="w-3 h-3" />
-                            <span className="text-xs">{formatDate(news.date)}</span>
-                          </div>
-                        </div>
-                        <CardTitle className="text-lg leading-tight">{news.title}</CardTitle>
-                      </CardHeader>
-                      
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line line-clamp-4 mb-4">
-                          {news.content}
-                        </p>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => openNewsModal(news)}
-                          className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:text-blue-700"
-                        >
-                          더보기
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-2 -mx-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {newsData.map((news) => (
+              <div key={news.id} className="flex-shrink-0 w-[85vw] max-w-sm">
+                <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge className={categoryColors[news.category_color]}>
+                        {news.category}
+                      </Badge>
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <Calendar className="w-3 h-3" />
+                        <span className="text-xs">{formatDate(news.date)}</span>
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg leading-tight">{news.title}</CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line line-clamp-4 mb-4 flex-1">
+                      {news.content}
+                    </p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => openNewsModal(news)}
+                      className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                    >
+                      더보기
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
-            </div>
-            
-            {/* 네비게이션 버튼 */}
-            <button 
-              onClick={prevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md"
-              aria-label="이전 소식"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button 
-              onClick={nextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md"
-              aria-label="다음 소식"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-            
-            {/* 인디케이터 도트 */}
-            <div className="flex justify-center mt-4 gap-2">
-              {newsData.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentSlide ? 'bg-blue-600' : 'bg-gray-300'
-                  }`}
-                  aria-label={`${index + 1}번째 소식으로 이동`}
-                />
-              ))}
-            </div>
+            ))}
           </div>
         </div>
 
