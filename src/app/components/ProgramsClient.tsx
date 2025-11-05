@@ -67,6 +67,30 @@ export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
         <div className="mt-12 md:mt-16 max-w-6xl mx-auto">
           <h3 className="text-xl md:text-2xl font-bold text-center mb-8">프로그램 단계별 수업 내용</h3>
           <div className="grid grid-cols-2 gap-3 md:gap-6">
+            {/* 수중건강 */}
+            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                  수중건강
+                </span>
+              </div>
+              <p className="text-sm md:text-base text-gray-700">
+                성인 및 시니어 대상, 수중 재활 운동 및 건강 증진 프로그램
+              </p>
+            </div>
+
+            {/* 어린이반 */}
+            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                  어린이반
+                </span>
+              </div>
+              <p className="text-sm md:text-base text-gray-700">
+                미취학 아동 대상, 물놀이와 기초 수영 적응 프로그램
+              </p>
+            </div>
+
             {/* 기초반 */}
             <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
               <div className="flex items-center gap-3 mb-3">
@@ -136,6 +160,18 @@ export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
               </div>
               <p className="text-sm md:text-base text-gray-700">
                 준선수반 대회출전 또는 수영 동호회 수준
+              </p>
+            </div>
+
+            {/* 주말반 */}
+            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                  주말반
+                </span>
+              </div>
+              <p className="text-sm md:text-base text-gray-700">
+                토/일요일 07:00-07:50 운영, 기초·초급·중급 수업 진행
               </p>
             </div>
           </div>

@@ -49,17 +49,6 @@ export function HeroSection() {
               체계적인 수영강습과 프리미엄 부대시설로<br className="hidden md:block" />
               건강한 라이프스타일을 시작하세요
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="w-full sm:w-auto sm:px-8"
-                onClick={scrollToPrograms}
-              >
-                수강신청 하기
-              </Button>
-
-            </div>
           </div>
           
           <div className="relative order-first md:order-last">

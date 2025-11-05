@@ -59,7 +59,7 @@ export function Header() {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span>0507-1462-1368</span>
+                <span>062-528-1300</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
@@ -87,8 +87,8 @@ export function Header() {
             {/* Mobile phone number */}
             <div className="md:hidden flex items-center gap-2 text-sm">
               <Phone className="w-3 h-3" />
-              <a href="tel:0507-1462-1368" className="hover:text-blue-200">
-                0507-1462-1368
+              <a href="tel:062-528-1300" className="hover:text-blue-200">
+                062-528-1300
               </a>
             </div>
             
@@ -96,7 +96,6 @@ export function Header() {
             <nav className="hidden md:flex items-center gap-8">
               <a href="#home" className="hover:text-blue-200 transition-colors">홈</a>
               <a href="#programs" className="hover:text-blue-200 transition-colors">수영강습</a>
-              <a href="#instructors" className="hover:text-blue-200 transition-colors">강사진</a>
               <a href="#facilities" className="hover:text-blue-200 transition-colors">시설안내</a>
               <a href="#contact" className="hover:text-blue-200 transition-colors">연락처</a>
             </nav>
@@ -130,22 +129,15 @@ export function Header() {
                 >
                   홈
                 </a>
-                <a 
-                  href="#programs" 
+                <a
+                  href="#programs"
                   className="hover:text-blue-200 transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   수영강습
                 </a>
-                <a 
-                  href="#instructors" 
-                  className="hover:text-blue-200 transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  강사진
-                </a>
-                <a 
-                  href="#facilities" 
+                <a
+                  href="#facilities"
                   className="hover:text-blue-200 transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -25,7 +25,7 @@ export function ContactSection() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-2xl font-bold text-blue-600 mb-2">0507-1462-1368</p>
+                <p className="text-2xl font-bold text-blue-600 mb-2">062-528-1300</p>
                 <p className="text-muted-foreground">평일 06:00-21:00, 주말 06:00-9:00</p>
               </CardContent>
             </Card>

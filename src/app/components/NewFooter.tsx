@@ -46,7 +46,7 @@ export function Footer() {
           <div>
             <h4 className="font-bold mb-4">고객센터</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>📞 0507-1462-1368</li>
+              <li>📞 062-528-1300</li>
               <li>📍 광주 북구 서하로 82</li>
               <li>🕐 평일 06:00-21:00</li>
               <li>🕐 주말 06:00-09:00</li>

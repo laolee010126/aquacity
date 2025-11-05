@@ -1,7 +1,6 @@
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/NewHeroSection";
 import { ProgramsSection } from "./components/ProgramsSection";
-import { InstructorsSection } from "./components/InstructorsSection";
 import { FacilitiesSection } from "./components/FacilitiesSection";
 import { NewsSection } from "./components/NewsSection";
 import { ContactSection } from "./components/ContactSection";
@@ -16,7 +15,6 @@ export default function App() {
         <HeroSection />
         <NewsSection />
         <ProgramsSection />
-        <InstructorsSection />
         <FacilitiesSection />
         <ContactSection />
       </main>
