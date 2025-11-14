@@ -79,6 +79,18 @@ export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
               </p>
             </div>
 
+            {/* 아쿠아로빅 */}
+            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm font-medium">
+                  아쿠아로빅
+                </span>
+              </div>
+              <p className="text-sm md:text-base text-gray-700">
+                수중에서 하는 유산소 운동, 체지방 감소 및 근력 강화 프로그램
+              </p>
+            </div>
+
             {/* 어린이반 */}
             <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
               <div className="flex items-center gap-3 mb-3">

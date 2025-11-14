@@ -1,10 +1,32 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { Flame, Droplets, Users } from "lucide-react";
 
+const heroImages = [
+  { src: "/images/infodesk.jpg", alt: "수영장 안내데스크" },
+  { src: "/images/sauna2.jpg", alt: "사우나 시설" },
+  { src: "/images/swinming-pool2.jpg", alt: "스위밍풀" },
+  { src: "/images/infinite-pool1.jpg", alt: "인피니티풀" },
+  { src: "/images/youth-pool2.jpg", alt: "유스풀" },
+  { src: "/images/youth-pool3.jpg", alt: "유스풀 전경" },
+];
+
 export function HeroSection() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // 5초마다 이미지 변경
+
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToPrograms = () => {
     const programsSection = document.getElementById('programs');
     if (programsSection) {
@@ -52,15 +74,39 @@ export function HeroSection() {
           </div>
           
           <div className="relative order-first md:order-last">
-            <ImageWithFallback 
-              src="/images/infodesk.jpg"
-              alt="수영장 전경"
-              className="rounded-lg shadow-2xl w-full h-60 md:h-80 object-cover"
-            />
-            {/* <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white text-blue-600 p-4 md:p-6 rounded-lg shadow-lg">
-              <div className="text-xl md:text-2xl font-bold">사우나</div>
-              <div className="text-xs md:text-sm">호텔형 대형 사우나 이용 가능</div>
-            </div> */}
+            {/* Image Slider */}
+            <div className="relative overflow-hidden rounded-lg shadow-2xl w-full h-60 md:h-80">
+              {heroImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <ImageWithFallback
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentImageIndex
+                      ? 'bg-white w-8'
+                      : 'bg-white/50 hover:bg-white/75'
+                  }`}
+                  aria-label={`이미지 ${index + 1}로 이동`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

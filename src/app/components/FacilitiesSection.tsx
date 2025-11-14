@@ -8,14 +8,14 @@ const premiumFacilities = [
     icon: Flame,
     title: "사우나시설",
     description: "고급스러운 사우나와 스파 시설로 수영 후 완벽한 휴식을 제공합니다.",
-    image: "/images/sauna.jpg", // 실제 사우나 이미지 경로로 교체해주세요
+    image: "/images/sauna1.jpg",
     color: "orange"
   },
   {
     icon: Droplets,
     title: "유수풀 시설",
     description: "물의 흐름을 이용한 유수풀로 재미와 운동 효과를 동시에 누리실 수 있습니다.",
-    image: "/images/water-pool.jpg", // 실제 유수풀 이미지 경로로 교체해주세요
+    image: "/images/youth-pool1.jpg",
     color: "blue"
   }
 ];
@@ -59,7 +59,7 @@ export function FacilitiesSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=600&h=400&fit=crop"
+              src="/images/swinming-pool1.jpg"
               alt="아쿠아시티 메인 수영장"
               className="rounded-lg shadow-lg w-full h-80 object-cover"
             />
