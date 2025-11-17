@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { Header } from "../components/Header";
-import { PageHero } from "../components/PageHero";
 import { ProgramsSection } from "../components/ProgramsSection";
 import { Footer } from "../components/NewFooter";
 
@@ -14,11 +13,6 @@ export default function ProgramsPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <PageHero
-          title="수영강습 프로그램"
-          description="전문 강사진과 함께하는 체계적인 수영강습으로 여러분의 수영 실력을 한 단계 올려보세요"
-          gradient="from-blue-600 to-cyan-600"
-        />
         <ProgramsSection />
       </main>
       <Footer />

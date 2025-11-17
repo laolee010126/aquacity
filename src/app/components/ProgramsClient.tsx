@@ -6,6 +6,87 @@ interface ProgramsClientProps {
   scheduleImageUrl: string | null
 }
 
+interface ProgramLevel {
+  level: string
+  description: string
+  target: string
+  color: string
+  colorClass: string
+}
+
+const programLevels: ProgramLevel[] = [
+  {
+    level: '수중건강',
+    description: '성인 및 시니어 대상, 수중 재활 운동 및 건강 증진 프로그램',
+    target: '성인, 시니어',
+    color: 'blue',
+    colorClass: 'bg-blue-100 text-blue-800'
+  },
+  {
+    level: '아쿠아로빅',
+    description: '수중에서 하는 유산소 운동, 체지방 감소 및 근력 강화 프로그램',
+    target: '성인',
+    color: 'teal',
+    colorClass: 'bg-teal-100 text-teal-800'
+  },
+  {
+    level: '어린이반',
+    description: '미취학 아동 대상, 물놀이와 기초 수영 적응 프로그램',
+    target: '미취학 아동',
+    color: 'purple',
+    colorClass: 'bg-purple-100 text-purple-800'
+  },
+  {
+    level: '기초반',
+    description: '수영장 이용안내 및 수칙안내, 호흡법, 자유형발차기, 팔돌리기',
+    target: '초보자',
+    color: 'green',
+    colorClass: 'bg-green-100 text-green-800'
+  },
+  {
+    level: '초급반',
+    description: '자유형 반복연습, 배면뜨기, 배면발차기, 손발 연결동작',
+    target: '초보자',
+    color: 'green',
+    colorClass: 'bg-green-100 text-green-800'
+  },
+  {
+    level: '중급반',
+    description: '자유형·배영 반복연습, 평영발차기, 평영 팔 돌리기 연결동작',
+    target: '중급자',
+    color: 'yellow',
+    colorClass: 'bg-yellow-100 text-yellow-800'
+  },
+  {
+    level: '상급반',
+    description: '자유형·배영·평영·접영 반복연습, 접영연결동작, 턴, 스타트 연습, 4가지 영법 자세교정, 오리발 착용, 지구력 중점 훈련',
+    target: '상급자',
+    color: 'red',
+    colorClass: 'bg-red-100 text-red-800'
+  },
+  {
+    level: '고급반',
+    description: '4가지 영법 교정 및 근지구력 훈련, 반복연습',
+    target: '상급자',
+    color: 'red',
+    colorClass: 'bg-red-100 text-red-800'
+  },
+  {
+    level: '마스터즈',
+    description: '준선수반 대회출전 또는 수영 동호회 수준',
+    target: '준선수급',
+    color: 'red',
+    colorClass: 'bg-red-100 text-red-800'
+  },
+  {
+    level: '주말반',
+    description: '토/일요일 07:00-07:50 운영, 기초·초급·중급 수업 진행',
+    target: '전체',
+    color: 'orange',
+    colorClass: 'bg-orange-100 text-orange-800'
+  }
+]
+
 export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -63,130 +144,49 @@ export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
           </div>
         )}
 
-        {/* 프로그램 레벨별 내용 */}
+        {/* 프로그램 레벨별 내용 - 표 형식 */}
         <div className="mt-12 md:mt-16 max-w-6xl mx-auto">
           <h3 className="text-xl md:text-2xl font-bold text-center mb-8">프로그램 단계별 수업 내용</h3>
-          <div className="grid grid-cols-2 gap-3 md:gap-6">
-            {/* 수중건강 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                  수중건강
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                성인 및 시니어 대상, 수중 재활 운동 및 건강 증진 프로그램
-              </p>
-            </div>
 
-            {/* 아쿠아로빅 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm font-medium">
-                  아쿠아로빅
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                수중에서 하는 유산소 운동, 체지방 감소 및 근력 강화 프로그램
-              </p>
-            </div>
-
-            {/* 어린이반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
-                  어린이반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                미취학 아동 대상, 물놀이와 기초 수영 적응 프로그램
-              </p>
-            </div>
-
-            {/* 기초반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                  기초반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                수영장 이용안내 및 수칙안내, 호흡법, 자유형발차기, 팔돌리기
-              </p>
-            </div>
-
-            {/* 초급반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                  초급반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                자유형 반복연습, 배면뜨기, 배면발차기, 손발 연결동작
-              </p>
-            </div>
-
-            {/* 중급반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
-                  중급반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                자유형·배영 반복연습, 평영발차기, 평영 팔 돌리기 연결동작
-              </p>
-            </div>
-
-            {/* 상급반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
-                  상급반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                자유형·배영·평영·접영 반복연습, 접영연결동작, 턴, 스타트 연습, 4가지 영법 자세교정, 오리발 착용, 지구력 중점 훈련
-              </p>
-            </div>
-
-            {/* 고급반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
-                  고급반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                4가지 영법 교정 및 근지구력 훈련, 반복연습
-              </p>
-            </div>
-
-            {/* 마스터즈 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
-                  마스터즈
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                준선수반 대회출전 또는 수영 동호회 수준
-              </p>
-            </div>
-
-            {/* 주말반 */}
-            <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
-                  주말반
-                </span>
-              </div>
-              <p className="text-sm md:text-base text-gray-700">
-                토/일요일 07:00-07:50 운영, 기초·초급·중급 수업 진행
-              </p>
-            </div>
+          {/* 모바일 스크롤 래퍼 */}
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white rounded-lg shadow-md overflow-hidden">
+              <thead className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+                <tr>
+                  <th className="px-4 md:px-6 py-4 text-left text-sm md:text-base font-semibold">레벨</th>
+                  <th className="px-4 md:px-6 py-4 text-left text-sm md:text-base font-semibold">수업 내용</th>
+                  <th className="px-4 md:px-6 py-4 text-left text-sm md:text-base font-semibold whitespace-nowrap">대상자</th>
+                </tr>
+              </thead>
+              <tbody>
+                {programLevels.map((program, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b border-gray-200 hover:bg-blue-50 transition-colors ${
+                      index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                    }`}
+                  >
+                    <td className="px-4 md:px-6 py-4">
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${program.colorClass}`}>
+                        {program.level}
+                      </span>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 text-sm md:text-base text-gray-700 leading-relaxed">
+                      {program.description}
+                    </td>
+                    <td className="px-4 md:px-6 py-4 text-sm md:text-base text-gray-600 whitespace-nowrap">
+                      {program.target}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+
+          {/* 모바일 안내 텍스트 */}
+          <p className="text-center text-sm text-gray-500 mt-4 md:hidden">
+            ← 좌우로 스크롤하여 전체 내용을 확인하세요 →
+          </p>
         </div>
 
         {/* 전체화면 모달 */}

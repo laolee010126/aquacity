@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { Header } from "../components/Header";
-import { PageHero } from "../components/PageHero";
 import { FacilitiesSection } from "../components/FacilitiesSection";
 import { Footer } from "../components/NewFooter";
 
@@ -14,11 +13,6 @@ export default function FacilitiesPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <PageHero
-          title="시설 안내"
-          description="최신 시설과 쾌적한 환경에서 안전하고 즐겁게 수영을 즐기세요"
-          gradient="from-teal-600 to-green-600"
-        />
         <FacilitiesSection />
       </main>
       <Footer />

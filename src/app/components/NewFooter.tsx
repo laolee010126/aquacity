@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -15,26 +17,21 @@ export function Footer() {
               프리미엄 수영장 아쿠아시티
             </p>
           </div>
-          
+
           <div>
-            <h4 className="font-bold mb-4">수영강습</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li>기초 수영교실</li>
-              <li>초급 수영교실</li>
-              <li>중급 수영교실</li>
-              <li>고급 수영교실</li>
-              <li>키즈마스터즈</li>
-              <li>성인마스터즈</li>
-              <li>아쿠아로빅</li>
-              <li>어린이 수영교실</li>
-              <li>개인 레슨</li>
-            </ul>
+            <Link href="/programs" className="font-bold mb-4 inline-block hover:text-blue-400 transition-colors">
+              수영강습 프로그램
+            </Link>
           </div>
           
           <div>
             <h4 className="font-bold mb-4">이용안내</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>시설 안내</li>
+              <li>
+                <Link href="/facilities" className="hover:text-blue-400 transition-colors">
+                  시설 안내
+                </Link>
+              </li>
               <li>수강료 안내</li>
               <li>운영시간</li>
               <li>오시는 길</li>

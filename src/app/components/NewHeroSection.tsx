@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { ImageWithFallback } from "./ImageWithFallback";
-import { Flame, Droplets, Users } from "lucide-react";
+import { Flame, Droplets, Users, Waves, Building2, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const heroImages = [
   { src: "/images/infodesk.jpg", alt: "수영장 안내데스크" },
@@ -92,6 +93,39 @@ export function HeroSection() {
                 />
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* 아쿠아시티 둘러보기 - 하단 카드 */}
+        <div className="mt-8 md:mt-12">
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <Link
+              href="/programs"
+              className="group flex items-center gap-4 p-4 md:p-6 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-xl hover:bg-white/20 transition-all duration-300"
+            >
+              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Waves className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-white text-lg">수영강습 프로그램</h3>
+                <p className="text-blue-100 text-sm">단계별 체계적인 수영강습</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+            <Link
+              href="/facilities"
+              className="group flex items-center gap-4 p-4 md:p-6 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-xl hover:bg-white/20 transition-all duration-300"
+            >
+              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Building2 className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-white text-lg">시설 안내</h3>
+                <p className="text-blue-100 text-sm">프리미엄 시설 둘러보기</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </div>
