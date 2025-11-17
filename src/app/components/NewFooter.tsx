@@ -19,9 +19,14 @@ export function Footer() {
           </div>
 
           <div>
-            <Link href="/programs" className="font-bold mb-4 inline-block hover:text-blue-400 transition-colors">
-              수영강습 프로그램
-            </Link>
+            <h4 className="font-bold mb-4">수영강습</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li>
+                <Link href="/programs" className="hover:text-blue-400 transition-colors">
+                  강습 프로그램
+                </Link>
+              </li>
+            </ul>
           </div>
           
           <div>
@@ -32,11 +37,7 @@ export function Footer() {
                   시설 안내
                 </Link>
               </li>
-              <li>수강료 안내</li>
-              <li>운영시간</li>
               <li>오시는 길</li>
-              <li>주차 안내</li>
-              <li>이용 규칙</li>
             </ul>
           </div>
           

@@ -1,7 +1,6 @@
 "use client";
 
 import { Phone, MapPin, Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -110,12 +109,6 @@ export function Header() {
               </Link>
             </nav>
 
-            <Link href="/programs">
-              <Button variant="secondary" className="hidden md:block">
-                수강신청
-              </Button>
-            </Link>
-
             {/* Mobile menu button */}
             <button 
               className="md:hidden"
@@ -161,11 +154,6 @@ export function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   연락처
-                </Link>
-                <Link href="/programs" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="secondary" className="mt-2 w-fit">
-                    수강신청
-                  </Button>
                 </Link>
               </nav>
             </div>

@@ -91,7 +91,7 @@ export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <section id="programs" className="py-12 md:py-20 bg-gray-50">
+    <section id="programs" className="pt-24 pb-12 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">수영강습 프로그램</h2>
@@ -182,11 +182,6 @@ export function ProgramsClient({ scheduleImageUrl }: ProgramsClientProps) {
               </tbody>
             </table>
           </div>
-
-          {/* 모바일 안내 텍스트 */}
-          <p className="text-center text-sm text-gray-500 mt-4 md:hidden">
-            ← 좌우로 스크롤하여 전체 내용을 확인하세요 →
-          </p>
         </div>
 
         {/* 전체화면 모달 */}
