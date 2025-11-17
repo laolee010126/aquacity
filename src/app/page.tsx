@@ -1,8 +1,7 @@
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/NewHeroSection";
-import { ProgramsSection } from "./components/ProgramsSection";
-import { FacilitiesSection } from "./components/FacilitiesSection";
 import { NewsSection } from "./components/NewsSection";
+import { QuickLinksSection } from "./components/QuickLinksSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/NewFooter";
 
@@ -14,8 +13,7 @@ export default function App() {
       <main>
         <HeroSection />
         <NewsSection />
-        <ProgramsSection />
-        <FacilitiesSection />
+        <QuickLinksSection />
         <ContactSection />
       </main>
       <Footer />

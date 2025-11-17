@@ -251,12 +251,6 @@ export function NewsClient({ initialNews }: NewsClientProps) {
             </div>
           </div>
         </div>
-        
-        <div className="text-center mt-8 md:mt-12">
-          <p className="text-muted-foreground text-sm">
-            더 많은 소식은 수영장 안내데스크에서 확인하실 수 있습니다.
-          </p>
-        </div>
       </div>
 
       {/* 뉴스 상세 모달 */}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "./ui/button";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { Flame, Droplets, Users } from "lucide-react";
 
@@ -26,20 +25,6 @@ export function HeroSection() {
 
     return () => clearInterval(interval);
   }, []);
-
-  const scrollToPrograms = () => {
-    const programsSection = document.getElementById('programs');
-    if (programsSection) {
-      const headerOffset = 80; // Approximate header height
-      const elementPosition = programsSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section id="home" className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-20 pb-12 md:py-20">

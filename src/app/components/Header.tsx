@@ -3,8 +3,11 @@
 import { Phone, MapPin, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Header() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [prevScrollY, setPrevScrollY] = useState(0);
@@ -34,19 +37,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollY]);
 
-  const scrollToPrograms = () => {
-    const programsSection = document.getElementById('programs');
-    if (programsSection) {
-      const headerOffset = 80; // Approximate header height
-      const elementPosition = programsSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <header className={`bg-blue-600 text-white fixed top-0 left-0 right-0 z-50 md:relative transition-transform duration-300 ${
@@ -77,12 +67,12 @@ export function Header() {
       <div className="py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <span className="text-blue-600 font-bold">🏊</span>
               </div>
               <h1 className="text-xl md:text-2xl font-bold">아쿠아시티</h1>
-            </div>
+            </Link>
 
             {/* Mobile phone number */}
             <div className="md:hidden flex items-center gap-2 text-sm">
@@ -94,15 +84,37 @@ export function Header() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
-              <a href="#home" className="hover:text-blue-200 transition-colors">홈</a>
-              <a href="#programs" className="hover:text-blue-200 transition-colors">수영강습</a>
-              <a href="#facilities" className="hover:text-blue-200 transition-colors">시설안내</a>
-              <a href="#contact" className="hover:text-blue-200 transition-colors">연락처</a>
+              <Link
+                href="/"
+                className={`hover:text-blue-200 transition-colors ${pathname === '/' ? 'font-semibold' : ''}`}
+              >
+                홈
+              </Link>
+              <Link
+                href="/programs"
+                className={`hover:text-blue-200 transition-colors ${pathname === '/programs' ? 'font-semibold' : ''}`}
+              >
+                수영강습
+              </Link>
+              <Link
+                href="/facilities"
+                className={`hover:text-blue-200 transition-colors ${pathname === '/facilities' ? 'font-semibold' : ''}`}
+              >
+                시설안내
+              </Link>
+              <Link
+                href="/#contact"
+                className="hover:text-blue-200 transition-colors"
+              >
+                연락처
+              </Link>
             </nav>
 
-            <Button variant="secondary" className="hidden md:block" onClick={scrollToPrograms}>
-              수강신청
-            </Button>
+            <Link href="/programs">
+              <Button variant="secondary" className="hidden md:block">
+                수강신청
+              </Button>
+            </Link>
 
             {/* Mobile menu button */}
             <button 
@@ -122,44 +134,39 @@ export function Header() {
           {isMenuOpen && (
             <div className="md:hidden mt-4 pb-4 border-t border-blue-500">
               <nav className="flex flex-col gap-4 mt-4">
-                <a 
-                  href="#home" 
-                  className="hover:text-blue-200 transition-colors py-2"
+                <Link
+                  href="/"
+                  className={`hover:text-blue-200 transition-colors py-2 ${pathname === '/' ? 'font-semibold' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   홈
-                </a>
-                <a
-                  href="#programs"
-                  className="hover:text-blue-200 transition-colors py-2"
+                </Link>
+                <Link
+                  href="/programs"
+                  className={`hover:text-blue-200 transition-colors py-2 ${pathname === '/programs' ? 'font-semibold' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   수영강습
-                </a>
-                <a
-                  href="#facilities"
-                  className="hover:text-blue-200 transition-colors py-2"
+                </Link>
+                <Link
+                  href="/facilities"
+                  className={`hover:text-blue-200 transition-colors py-2 ${pathname === '/facilities' ? 'font-semibold' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   시설안내
-                </a>
-                <a 
-                  href="#contact" 
+                </Link>
+                <Link
+                  href="/#contact"
                   className="hover:text-blue-200 transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   연락처
-                </a>
-                <Button
-                  variant="secondary"
-                  className="mt-2 w-fit"
-                  onClick={() => {
-                    scrollToPrograms();
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  수강신청
-                </Button>
+                </Link>
+                <Link href="/programs" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="secondary" className="mt-2 w-fit">
+                    수강신청
+                  </Button>
+                </Link>
               </nav>
             </div>
           )}
