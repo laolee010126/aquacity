@@ -103,8 +103,8 @@ export function Header() {
                 시설안내
               </Link>
               <Link
-                href="/#contact"
-                className="hover:text-blue-200 transition-colors"
+                href="/contact"
+                className={`hover:text-blue-200 transition-colors ${pathname === '/contact' ? 'font-semibold' : ''}`}
               >
                 연락처
               </Link>
@@ -156,8 +156,8 @@ export function Header() {
                   시설안내
                 </Link>
                 <Link
-                  href="/#contact"
-                  className="hover:text-blue-200 transition-colors py-2"
+                  href="/contact"
+                  className={`hover:text-blue-200 transition-colors py-2 ${pathname === '/contact' ? 'font-semibold' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   연락처

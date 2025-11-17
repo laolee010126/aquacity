@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ImageWithFallback } from "./ImageWithFallback";
-import { Flame, Droplets, Users, Waves, Building2, ArrowRight } from "lucide-react";
+import { Flame, Droplets, Users, Waves, Building2, Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const heroImages = [
@@ -98,7 +98,7 @@ export function HeroSection() {
 
         {/* 아쿠아시티 둘러보기 - 하단 카드 */}
         <div className="mt-8 md:mt-12">
-          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             <Link
               href="/programs"
               className="group flex items-center gap-4 p-4 md:p-6 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-xl hover:bg-white/20 transition-all duration-300"
@@ -107,10 +107,10 @@ export function HeroSection() {
                 <Waves className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-white text-lg">수영강습 프로그램</h3>
-                <p className="text-blue-100 text-sm">단계별 체계적인 수영강습</p>
+                <h3 className="font-bold text-white text-base md:text-lg">수영강습 프로그램</h3>
+                <p className="text-blue-100 text-xs md:text-sm">단계별 체계적인 수영강습</p>
               </div>
-              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform hidden md:block" />
             </Link>
 
             <Link
@@ -121,10 +121,24 @@ export function HeroSection() {
                 <Building2 className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-white text-lg">시설 안내</h3>
-                <p className="text-blue-100 text-sm">프리미엄 시설 둘러보기</p>
+                <h3 className="font-bold text-white text-base md:text-lg">시설 안내</h3>
+                <p className="text-blue-100 text-xs md:text-sm">프리미엄 시설 둘러보기</p>
               </div>
-              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform hidden md:block" />
+            </Link>
+
+            <Link
+              href="/contact"
+              className="group flex items-center gap-4 p-4 md:p-6 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-xl hover:bg-white/20 transition-all duration-300"
+            >
+              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Phone className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-white text-base md:text-lg">연락처 & 위치</h3>
+                <p className="text-blue-100 text-xs md:text-sm">운영시간 및 오시는 길</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform hidden md:block" />
             </Link>
           </div>
         </div>
