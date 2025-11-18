@@ -1,32 +1,44 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Waves, Bath, Car, Wifi, Flame, Droplets } from "lucide-react";
+import { Waves, Bath, Car, Wifi, Flame, Droplets, Infinity, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
 
-// Featured premium facilities
+// Featured premium facilities with multiple images
 const premiumFacilities = [
+  {
+    icon: Waves,
+    title: "메인 수영장",
+    description: "25m x 15m 규격의 메인 수영장으로 6개 레인을 갖추고 있습니다.",
+    images: ["/images/swimming-pool.jpg", "/images/swinming-pool1.jpg", "/images/swinming-pool2.jpg"],
+    color: "blue"
+  },
   {
     icon: Flame,
     title: "사우나시설",
     description: "고급스러운 사우나와 스파 시설로 수영 후 완벽한 휴식을 제공합니다.",
-    image: "/images/sauna1.jpg",
+    images: ["/images/sauna1.jpg", "/images/sauna2.jpg", "/images/sauna3.jpg"],
     color: "orange"
   },
   {
     icon: Droplets,
-    title: "유수풀 시설",
-    description: "물의 흐름을 이용한 유수풀로 재미와 운동 효과를 동시에 누리실 수 있습니다.",
-    image: "/images/youth-pool1.jpg",
-    color: "blue"
+    title: "유스풀 시설",
+    description: "어린이와 청소년을 위한 안전하고 재미있는 수영 공간입니다.",
+    images: ["/images/youth-pool1.jpg", "/images/youth-pool2.jpg"],
+    color: "cyan"
+  },
+  {
+    icon: Infinity,
+    title: "인피니티풀",
+    description: "탁 트인 전망과 함께 즐기는 프리미엄 인피니티 풀 경험을 제공합니다.",
+    images: ["/images/infinite-pool1.jpg"],
+    color: "purple"
   }
 ];
 
 // Regular facilities
 const facilities = [
-  {
-    icon: Waves,
-    title: "메인 수영장",
-    description: "25m x 15m 규격의 메인 수영장으로 6개 레인을 갖추고 있습니다."
-  },
   {
     icon: Bath,
     title: "샤워실",
@@ -44,6 +56,89 @@ const facilities = [
   }
 ];
 
+// Image slider component for each facility card
+function FacilityImageSlider({ images, title }: { images: string[], title: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // Auto-slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <div className="relative h-48 md:h-64 overflow-hidden group">
+      {/* Images */}
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            index === currentIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <ImageWithFallback
+            src={image}
+            alt={`${title} ${index + 1}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
+
+      {/* Navigation buttons - only show if more than 1 image */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={goToPrevious}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            aria-label="이전 이미지"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            aria-label="다음 이미지"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Indicators */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex
+                    ? 'bg-white w-6'
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+                aria-label={`이미지 ${index + 1}로 이동`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export function FacilitiesSection() {
   return (
     <section id="facilities" className="pt-24 pb-20 md:py-20 bg-gradient-to-b from-white to-gray-50">
@@ -55,65 +150,32 @@ export function FacilitiesSection() {
           </p>
         </div>
 
-        {/* Pool showcase section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <ImageWithFallback
-              src="/images/swinming-pool1.jpg"
-              alt="아쿠아시티 메인 수영장"
-              className="rounded-lg shadow-lg w-full h-80 object-cover"
-            />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-6">프리미엄 수영장 시설</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
-                <div>
-                  <h4 className="font-medium">정밀 수질 관리</h4>
-                  <p className="text-muted-foreground text-sm">최신 정수 시설로 항상 깨끗하고 안전한 물을 유지합니다</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
-                <div>
-                  <h4 className="font-medium">적정 수온 유지</h4>
-                  <p className="text-muted-foreground text-sm">연중 28-30도의 쾌적한 수온을 유지합니다</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
-                <div>
-                  <h4 className="font-medium">넓은 수영 공간</h4>
-                  <p className="text-muted-foreground text-sm">여유로운 레인 운영으로 쾌적한 수영 환경을 제공합니다</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Premium Featured Facilities */}
+        {/* Premium Featured Facilities - 4 cards with image sliders */}
         <div className="mb-16">
-          <div className="grid grid-cols-2 gap-4 md:gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
             {premiumFacilities.map((facility, index) => {
               const Icon = facility.icon;
-              const colorClasses = facility.color === "orange"
-                ? "bg-orange-50 border-orange-100 hover:border-orange-200"
-                : "bg-blue-50 border-blue-100 hover:border-blue-200";
-              const iconColorClasses = facility.color === "orange"
-                ? "bg-orange-500"
-                : "bg-blue-500";
+              const colorClasses =
+                facility.color === "orange" ? "bg-orange-50 border-orange-100 hover:border-orange-200" :
+                facility.color === "blue" ? "bg-blue-50 border-blue-100 hover:border-blue-200" :
+                facility.color === "cyan" ? "bg-cyan-50 border-cyan-100 hover:border-cyan-200" :
+                "bg-purple-50 border-purple-100 hover:border-purple-200";
+
+              const iconColorClasses =
+                facility.color === "orange" ? "bg-orange-500" :
+                facility.color === "blue" ? "bg-blue-500" :
+                facility.color === "cyan" ? "bg-cyan-500" :
+                "bg-purple-500";
 
               return (
                 <Card
                   key={index}
                   className={`overflow-hidden border-2 transition-all hover:shadow-xl ${colorClasses}`}
                 >
-                  <div className="relative h-48 md:h-56 overflow-hidden">
-                    <ImageWithFallback
-                      src={facility.image}
-                      alt={facility.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  <div className="relative">
+                    <FacilityImageSlider
+                      images={facility.images}
+                      title={facility.title}
                     />
                     <div className={`absolute top-4 right-4 w-12 h-12 ${iconColorClasses} rounded-full flex items-center justify-center shadow-lg`}>
                       <Icon className="w-6 h-6 text-white" />
@@ -136,7 +198,7 @@ export function FacilitiesSection() {
         {/* Regular facilities grid */}
         <div>
           <h3 className="text-xl font-bold text-center mb-8">기타 편의시설</h3>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {facilities.map((facility, index) => {
               const Icon = facility.icon;
               return (
