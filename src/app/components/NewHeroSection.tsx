@@ -11,7 +11,7 @@ const heroImages = [
   { src: "/images/swinming-pool2.jpg", alt: "스위밍풀" },
   { src: "/images/infinite-pool1.jpg", alt: "인피니티풀" },
   { src: "/images/youth-pool2.jpg", alt: "유스풀" },
-  { src: "/images/youth-pool3.jpg", alt: "유스풀 전경" },
+  { src: "/images/youth-pool1.jpg", alt: "유스풀 전경" },
 ];
 
 export function HeroSection() {
@@ -108,7 +108,7 @@ export function HeroSection() {
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-white text-base md:text-lg">수영강습 프로그램</h3>
-                <p className="text-blue-100 text-xs md:text-sm">단계별 체계적인 수영강습</p>
+                <p className="text-blue-100 text-xs md:text-sm">이번달 수영강습표를 확인해보세요</p>
               </div>
               <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform hidden md:block" />
             </Link>
@@ -122,7 +122,7 @@ export function HeroSection() {
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-white text-base md:text-lg">시설 안내</h3>
-                <p className="text-blue-100 text-xs md:text-sm">프리미엄 시설 둘러보기</p>
+                <p className="text-blue-100 text-xs md:text-sm">아쿠아시티 시설 둘러보기</p>
               </div>
               <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform hidden md:block" />
             </Link>
