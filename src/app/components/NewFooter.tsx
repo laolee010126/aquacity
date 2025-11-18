@@ -37,7 +37,11 @@ export function Footer() {
                   시설 안내
                 </Link>
               </li>
-              <li>오시는 길</li>
+              <li>
+                <Link href="/contact" className="hover:text-blue-400 transition-colors">
+                  연락처 & 위치
+                </Link>
+              </li>
             </ul>
           </div>
           
