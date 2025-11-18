@@ -38,6 +38,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/safety" className="hover:text-blue-400 transition-colors">
+                  안전수칙
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="hover:text-blue-400 transition-colors">
                   연락처 & 위치
                 </Link>
